@@ -1,16 +1,17 @@
-var express = require("express"),
-	app 	= express();
+var express = require("express");
+var	app = express();
+var PORT = 80;
 
 	app.set("view engine", "ejs");
 
 	app.get("/", function(req,res){
 		res.redirect("index");
-	})
+	});
 
 	app.get("/index", function(req, res){
 		res.render("index");
 	});
 
-	app.listen(3000, function () {
-		console.log("Express server listening on port 3000");
+	app.listen(PORT, function () {
+		console.log("Express server listening on port"+ PORT);
 	});
