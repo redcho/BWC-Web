@@ -1,6 +1,6 @@
 var express = require("express");
 var	app = express();
-var PORT = 3000;
+var PORT = 80;
 var authentication = require('./models/authentication');
 
 	app.set("view engine", "ejs");
