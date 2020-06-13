@@ -41,8 +41,13 @@ build/Release
 node_modules/
 jspm_packages/
 
+<<<<<<< HEAD
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
+=======
+# TypeScript v1 declaration files
+typings/
+>>>>>>> 2709e3ff1596c5a9fd883df138aa24548455bf2a
 
 # TypeScript cache
 *.tsbuildinfo
@@ -74,11 +79,17 @@ web_modules/
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
+<<<<<<< HEAD
 .parcel-cache
 
 # Next.js build output
 .next
 out
+=======
+
+# Next.js build output
+.next
+>>>>>>> 2709e3ff1596c5a9fd883df138aa24548455bf2a
 
 # Nuxt.js build / generate output
 .nuxt
@@ -107,6 +118,7 @@ dist
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
+<<<<<<< HEAD
 
 # yarn v2
 .yarn/cache
@@ -114,3 +126,6 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+=======
+© 2020 GitHub, Inc.
+>>>>>>> 2709e3ff1596c5a9fd883df138aa24548455bf2a
