@@ -1,12 +1,13 @@
 import React from 'react';
+import NavigationItems from './NavigationItems/NavigationItems';
 
-const NavigationItems = (props) => {
+const NavigationItem = (props) => {
 	return (
 		<ul>
-			<li>Deneme</li>
+			<NavigationItems link="/">A Link</NavigationItems>
 		</ul>
 		);
 };
 
-export default NavigationItems;
+export default NavigationItem;
 
