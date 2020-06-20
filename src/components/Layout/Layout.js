@@ -1,11 +1,11 @@
 import React from 'react';
 import Aux from '../../hoc/Aux.js';
+import Toolbar from '../Navigation/Toolbar.js';
 
 const Layout = () => {
 	return (
 		<Aux>
-			<p>Hello World</p>
-			<p>Eren</p>
+			<Toolbar />
 		</Aux>
 		);
 };
