@@ -5,9 +5,11 @@ class StatBuilder extends Component {
 
 	};
 	render(){
+		return (
 		<div>
 			StatBuilder
 		</div>
+		);
 	};
 };
 
