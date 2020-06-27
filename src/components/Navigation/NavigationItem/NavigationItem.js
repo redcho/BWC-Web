@@ -1,10 +1,15 @@
 import React from 'react';
 import NavigationItems from './NavigationItems/NavigationItems';
 
-const NavigationItem = (props) => {
+const NavItem = ['LOGO ','PVP ','PVE ','AUCTION HOUSE ','STATS '];
+
+const NavigationItem = () => {
 	return (
 		<ul>
-			<NavigationItems link="/">A Link</NavigationItems>
+			{NavItem.map(nvt => (
+				 	<NavigationItems link={nvt} key={nvt}>{nvt}</NavigationItems>
+					)
+				)}
 		</ul>
 		);
 };
