@@ -1,8 +1,9 @@
 import React from 'react';
+import classes from './StatsModal.module.css';
 
 const StatsModal = (props) => {
 	return (
-		<div>{props.children}</div>
+		<div className={classes.Box}>{props.children}</div>
 		);
 };
 

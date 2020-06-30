@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import classes from './StatBuilder.module.css';
 
 class StatBuilder extends Component {
 	state = {
@@ -6,7 +7,7 @@ class StatBuilder extends Component {
 	};
 	render(){
 		return (
-		<div>
+		<div className={classes.FloatNone}>
 			StatBuilder
 		</div>
 		);

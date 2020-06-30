@@ -1,0 +1,7 @@
+.Box {
+	min-height: 350px;
+	width: 730px;
+	border: 5px solid red;
+	margin: 100px;
+	margin-top: 50px;
+}
