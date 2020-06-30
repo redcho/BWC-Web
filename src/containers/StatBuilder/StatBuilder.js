@@ -8,7 +8,7 @@ class StatBuilder extends Component {
 	render(){
 		return (
 		<div className={classes.FloatNone}>
-			StatBuilder
+			Realm ,Classes, Specilizations 
 		</div>
 		);
 	};
