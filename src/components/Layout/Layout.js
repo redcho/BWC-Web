@@ -1,14 +1,13 @@
 import React from 'react';
 import Aux from '../../hoc/Aux.js';
-import Toolbar from '../Navigation/Toolbar.js';
-import Stats from '../Stats/Stats';
+import NavigationItem from '../Navigation/NavigationItem.js';
+
 
 
 const Layout = () => {
 	return (
 		<Aux>
-			<Toolbar />
-			<Stats />
+			<NavigationItem />
 		</Aux>
 		);
 };

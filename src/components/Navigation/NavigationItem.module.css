@@ -1,0 +1,36 @@
+.Navcss {
+	list-style-type: none;
+	background-color: #1c1d1f;
+	margin: 0;
+	padding: 0;
+
+	-webkit-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.75);
+	box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.75);
+}
+
+
+.Navcss li {
+	display: inline;
+
+}
+
+.Navcss a{
+	display: inline-block;
+	text-align: center;
+	color: #d7d9db;
+	text-decoration: none;
+	width: 16.66%;
+
+}
+
+		.Navcss a:hover,
+		.Navcss a:active,
+		.Navcss a.active{
+			background-color: rgb(112,3,3);
+}
+
+
+
+
+
