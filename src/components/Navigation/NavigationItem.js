@@ -34,7 +34,7 @@ const NavigationItem = () => {
 				)
 			}
 		);
-		console.log(Navelements);
+	//	console.log(Navelements);
 
 	return (
 		<div>

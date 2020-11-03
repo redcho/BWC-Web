@@ -39,9 +39,26 @@ input[type=submit] {
     cursor: pointer;
 }
 
-input[type=submit]:hover {
+.InputElement {
+    outline: none;
+    border: 2px solid #ccc;
+    background-color: white;
+    padding: 6px 10px;
+    box-sizing: border-box;
+}
 
+.InputElement:focus {
+    outline: none;
+    background-color: #ccc;
+}
 
+.Invalid {
+    border: 1px solid red;
+    background-color: #FDA49A;
+}
+
+input:disabled {
+    cursor: not-allowed;
 }
 
 
