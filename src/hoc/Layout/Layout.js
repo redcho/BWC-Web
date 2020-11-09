@@ -1,15 +1,27 @@
-import React from 'react';
-import Aux from '../../hoc/Aux.js';
-import NavigationItem from '../Navigation/NavigationItem.js';
+import React, {Component} from 'react';
+import Aux from '../Aux';
+import NavigationItem from '../../components/Navigation/NavigationItem.js';
+
+import { connect } from 'react-redux';
 
 
+class Layout extends Component{
 
-const Layout = () => {
-	return (
-		<Aux>
-			<NavigationItem />
-		</Aux>
+	render() {
+
+		return (
+			<Aux>
+				<NavigationItem
+				isAuth ={this.props.isAuthenticated}/>
+			</Aux>
 		);
+	};
+}
+
+const mapStateToProps = state => {
+	return {
+		isAuthenticated: state.auth.token !== null
+	};
 };
 
-export default Layout;
+export default connect(mapStateToProps)(Layout);

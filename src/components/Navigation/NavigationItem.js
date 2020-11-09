@@ -10,7 +10,7 @@ const NavItem = ['HOME ','PVP ','PVE','AUCTION HOUSE ','STATS ','LOG IN'];
 
 
 
-const NavigationItem = () => {
+const NavigationItem = (props) => {
 // Tiklandiginda renk degisiyor ama degismis halde kalmiyor duzeltilecek
 		let Navelements = NavItem.map(nvt => {
 			if(nvt === 'LOG IN' ) {
