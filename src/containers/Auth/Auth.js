@@ -45,10 +45,10 @@ class Auth extends Component {
     inputChangedHandler = (event, inputIdentifier) => {
         const updatedForm = {
             ...this.state.AuthForm
-        }
+        };
         const updatedFormElement = {
             ...this.state.AuthForm[inputIdentifier]
-        }
+        };
         updatedFormElement.value = event.target.value;
         updatedFormElement.touched = true;
         updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
@@ -60,7 +60,11 @@ class Auth extends Component {
         }
         this.setState({AuthForm: updatedForm, totalValid: TotalValid});
         //console.log(updatedFormElement);
+    };
 
+    submitHandler = (event) => {
+        event.preventDefault();
+        this.props.onAuth(this.state.AuthForm.email.value, this.state.AuthForm.password.value);
     };
 
     render() {
@@ -76,7 +80,7 @@ class Auth extends Component {
         }
 
         return (
-                <form className={classes.Authcss}>
+                <form className={classes.Authcss} onSubmit={this.submitHandler}>
 
                     {authFormArray.map(authForm => (
                         <input

@@ -49,7 +49,7 @@ const NavigationItem = () => {
 				<Route path="/pvp" component={Stats} />
 				<Route path="/pve" component={Stats} />
 				<Route path="/login" component={Auth} />
-				<Redirect from="/" to="/stats"/>
+				<Redirect from="/" to="/login"/>
 			</Switch>
 
 		</div>
