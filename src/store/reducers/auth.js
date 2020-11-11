@@ -21,7 +21,7 @@ const authSuccess = (state, action) => {
     });
 };
 
-const authLogout = (state, action) => {
+const authLogout = (state) => {
     return updatedObject(state, {token: null, userId: null});
 };
 

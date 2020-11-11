@@ -1,0 +1,21 @@
+li {
+    display: inline;
+
+}
+
+a{
+    display: inline-block;
+    text-align: center;
+    color: #d7d9db;
+    text-decoration: none;
+    width: 16.66%;
+
+}
+
+a:hover,
+a:active,
+a.active{
+    background-color: rgb(112,3,3);
+}
+
+

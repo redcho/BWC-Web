@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import classes from './Auth.module.css';
 import * as actions from '../../store/actions/index';
+import {Redirect} from "react-router-dom";
 
 
 class Auth extends Component {
@@ -79,36 +80,49 @@ class Auth extends Component {
             })
         }
 
+        let authRedirect = null;
+        if(this.props.isAuthenticated) {
+           authRedirect = <Redirect to="/home"/>
+        }
+
         return (
-                <form className={classes.Authcss} onSubmit={this.submitHandler}>
-
-                    {authFormArray.map(authForm => (
-                        <input
-                           // className={inputClasses.join(' ')}
-                            className={authForm.config.valid ? inputClasses.join(' ') : invalidInputClasses.join(' ') &&
-                                authForm.config.touched ? invalidInputClasses.join(' ') : inputClasses.join(' ') }
-                            key={authForm.config.elementType}
-                            type={authForm.config.elementType}
-                            placeholder={authForm.config.placeholder}
-                            onChange={(event) =>{
+                <div>
+                    {authRedirect}
+                    <form className={classes.Authcss} onSubmit={this.submitHandler}>
+                        {authFormArray.map(authForm => (
+                                <input
+                                    // className={inputClasses.join(' ')}
+                                    className={authForm.config.valid ? inputClasses.join(' ') : invalidInputClasses.join(' ') &&
+                                    authForm.config.touched ? invalidInputClasses.join(' ') : inputClasses.join(' ') }
+                                    key={authForm.config.elementType}
+                                    type={authForm.config.elementType}
+                                    placeholder={authForm.config.placeholder}
+                                    onChange={(event) =>{
                                         this.inputChangedHandler(event, authForm.id);
-                                        }
                                     }
-                        />
-                        )
-                    )}
-                    <br/>
-                    <input type="submit" value="LOG IN" disabled={!this.state.totalValid}/>
+                                    }
+                                />
+                            )
+                        )}
+                        <br/>
+                        <input type="submit" value="LOG IN" disabled={!this.state.totalValid}/>
+                    </form>
+                </div>
 
-                </form>
         );
     };
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAuth: (email, password) => dispatch(actions.auth(email, password))
+      onAuth: (email, password) => dispatch(actions.auth(email, password))
   };
 };
 
-export default connect(null, mapDispatchToProps)(Auth);
+const mapStateToProps = state => {
+    return {
+       isAuthenticated: state.auth.token !== null
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);
