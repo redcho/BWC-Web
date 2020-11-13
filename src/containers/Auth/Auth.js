@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import classes from './Auth.module.css';
 import * as actions from '../../store/actions/index';
 import {Redirect} from "react-router-dom";
+
+import Spinner from "../../components/UI/Spinner/Spinner";
+import classes from './Auth.module.css';
 
 
 class Auth extends Component {
@@ -80,33 +82,41 @@ class Auth extends Component {
             })
         }
 
+        let form = authFormArray.map(authForm => (
+                <input
+                    // className={inputClasses.join(' ')}
+                    className={authForm.config.valid ? inputClasses.join(' ') : invalidInputClasses.join(' ') &&
+                    authForm.config.touched ? invalidInputClasses.join(' ') : inputClasses.join(' ') }
+                    key={authForm.config.elementType}
+                    type={authForm.config.elementType}
+                    placeholder={authForm.config.placeholder}
+                    onChange={(event) =>{
+                        this.inputChangedHandler(event, authForm.id);
+                    }
+                    }
+                />
+            )
+        );
+
         let authRedirect = null;
         if(this.props.isAuthenticated) {
            authRedirect = <Redirect to="/home"/>
         }
 
+        if(this.props.isLogin) {
+            form = <Spinner/>
+
+        }
+
+
         return (
                 <div>
-                    {authRedirect}
                     <form className={classes.Authcss} onSubmit={this.submitHandler}>
-                        {authFormArray.map(authForm => (
-                                <input
-                                    // className={inputClasses.join(' ')}
-                                    className={authForm.config.valid ? inputClasses.join(' ') : invalidInputClasses.join(' ') &&
-                                    authForm.config.touched ? invalidInputClasses.join(' ') : inputClasses.join(' ') }
-                                    key={authForm.config.elementType}
-                                    type={authForm.config.elementType}
-                                    placeholder={authForm.config.placeholder}
-                                    onChange={(event) =>{
-                                        this.inputChangedHandler(event, authForm.id);
-                                    }
-                                    }
-                                />
-                            )
-                        )}
+                        {form}
                         <br/>
                         <input type="submit" value="LOG IN" disabled={!this.state.totalValid}/>
                     </form>
+                    {authRedirect}
                 </div>
 
         );
@@ -121,7 +131,9 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
     return {
-       isAuthenticated: state.auth.token !== null
+       isAuthenticated: state.auth.token !== null,
+        isLogin: state.auth.loading,
+
     };
 };
 
