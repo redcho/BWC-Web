@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
 import Layout from './hoc/Layout/Layout';
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch, withRouter } from "react-router-dom";
 import Stats from "./components/Stats/Stats";
 import Auth from "./containers/Auth/Auth";
 import Logout from "./containers/Auth/Logout/logout";
 
 import { connect } from 'react-redux';
+import * as actions from "./store/actions/index";
+
 
 class App extends Component {
+    componentDidMount() {
+        this.props.onTryAutoSignUp();
+    }
+
     render() {
 
         let routes = (
@@ -49,4 +55,10 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => {
+    return {
+        onTryAutoSignUp:() => dispatch(actions.authCheckState())
+    }
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

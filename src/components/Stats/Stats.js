@@ -5,22 +5,12 @@ import classes from './Stats.module.css';
 
 const Stats = () => {
 	return (
+
 		<Aux>
-
-			<div className={classes.Flex}>
-
-				<StatsModal>1</StatsModal>
-				<StatsModal>2</StatsModal>	
-
-			</div>
-
-			<div className={classes.Flex}>
-
-				<StatsModal>3</StatsModal>
-				<StatsModal>4</StatsModal>	
-
-			</div>
-
+				<StatsModal>PVP LeaderBoards , 2v2 , 3v3, RBG</StatsModal>
+				<StatsModal>Raid, Top 5 raid names</StatsModal>
+				<StatsModal>Auction House most selling items in professions</StatsModal>
+				<StatsModal>Server Stats best server pve guild best pvp char</StatsModal>
 		</Aux>
 		);
 };
