@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import Layout from './hoc/Layout/Layout';
 import { Redirect, Route, Switch, withRouter } from "react-router-dom";
-import Stats from "./components/Stats/Stats";
 import Auth from "./containers/Auth/Auth";
 import Logout from "./containers/Auth/Logout/logout";
+import StatBuilder from "./containers/StatBuilder/StatBuilder";
 
 import { connect } from 'react-redux';
 import * as actions from "./store/actions/index";
@@ -28,13 +28,13 @@ class App extends Component {
         if(this.props.isAuthenticated) {
            routes = (
                <Switch>
-                   <Route path="/home" component={Stats} />
+                   <Route path="/home" component={StatBuilder} />
                    <Route path="/login" component={Auth} />
-                   <Route path="/pvp" component={Stats} />
-                   <Route path="/pve" component={Stats} />
-                   <Route path="/auctionhouse" component={Stats} />
+                   <Route path="/pvp" component={StatBuilder} />
+                   <Route path="/pve" component={StatBuilder} />
+                   <Route path="/auctionhouse" component={StatBuilder} />
                    <Route path="/logout" component={Logout} />
-                   <Route path="/stats" component={Stats} />
+                   <Route path="/stats" component={StatBuilder} />
                    <Redirect from="/" to="/login"/>
                </Switch>
            );
