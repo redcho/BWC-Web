@@ -1,11 +1,20 @@
 .headerCss {
     text-align: center;
+    font-size: 3rem;
 }
 
 .flexContainer {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.flexContainer > div {
+    width: 33%;
+    text-align: center;
+}
+th {
+    width: 11%;
 }
 
 
