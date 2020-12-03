@@ -1,8 +1,3 @@
-.headerCss {
-    text-align: center;
-    font-size: 3rem;
-}
-
 .flexContainer {
     display: flex;
     justify-content: center;
@@ -13,10 +8,99 @@
     width: 33%;
     text-align: center;
 }
+table {
+    margin-left: 5rem;
+    margin-right: 5rem;
+    border: 1px solid #DFA039;
+    border-collapse: collapse;
+}
 th {
-    width: 11%;
+    font-size: 1.5rem;
+    color: #688DA7;
+    border: 1px solid #DFA039;
 }
 
+td {
+    padding: 0;
+    color: #DFA039;
+    width: 11%;
+    border: 1px solid #DFA039;
+    font-size: 1.3rem;
+}
+.moreLink {
+    display: inline;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    /*color: #DFA039;*/
+    color: #688DA7;
+}
+
+h2 {
+    margin: 0;
+    /*color: #DFA039;*/
+    color: #688DA7;
+    font-size: 2.5rem;
+}
+
+p {
+    color: #DFA039;
+    margin: 0 5rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.demoWrap{
+    position: relative;
+    overflow: hidden;
+}
+.demoWrap h1, p {
+    position: relative;
+    z-index: 2;
+}
+
+.demoWrap:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 2rem;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.2;
+    background-image: url('../../assets/wowLogo.png');
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: auto;
+}
+
+.mainDiv{
+    position: relative;
+    overflow: hidden;
+}
+.mainDiv div {
+    position: relative;
+    z-index: 2;
+}
+
+.mainDiv:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 2rem;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.2;
+    background-image: url('../../assets/wowo.jpg');
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: 100% 100%;
+}
 
 
 

@@ -1,7 +1,8 @@
 .Navcss {
 	list-style-type: none;
-	background-color: #1c1d1f;
-	margin: 0;
+	/*background-color: #1c1d1f;*/
+	background-color: #1F364E;
+
 	padding: 0;
 
 	-webkit-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.75);

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import classes from "./StatBuilder.module.css";
 import axios from "../../axios-dummy";
 import Spinner from "../../components/UI/Spinner/Spinner";
+import Aux from "../../hoc/Aux";
+import wowImage from "../../assets/wowLogo.png";
 
 class StatBuilder extends Component{
     state = {
@@ -64,9 +66,9 @@ class StatBuilder extends Component{
         if(this.state.DummyData) {
                 MiniStat = this.state.DummyData.map(arrayModal => (
                     <tr>
-                        <th>{arrayModal.rank}</th>
-                        <th>{arrayModal.rating}</th>
-                        <th>{arrayModal.name}</th>
+                        <td>{arrayModal.rank}</td>
+                        <td>{arrayModal.rating}</td>
+                        <td>{arrayModal.name}</td>
                     </tr>
                 ))
         }
@@ -76,8 +78,10 @@ class StatBuilder extends Component{
 
 
         let StatModal = arrayStatModal.map(arrayModal => (
-            <div className={classes.mainDiv}>
-                <h1 className={classes.headerCss}>{arrayModal.config.header}</h1>
+            <div>
+                {/*{arrayModal.config.header === 'PVE STATS' ?*/}
+                {/*<img src={pveHunter} alt="PVE"/>: <img src={arena} alt="ArenaPVP"/>}*/}
+                <h1>{arrayModal.config.header}</h1>
                 <div className={classes.flexContainer}>
                     {
                         arrayModal.config.listElements.map(elm =>{
@@ -94,6 +98,11 @@ class StatBuilder extends Component{
                                             <tbody>
                                                 {MiniStatMultiple}
                                             </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <td colSpan="3"><a className={classes.moreLink} href="">SEE MORE >>></a></td>
+                                                </tr>
+                                            </tfoot>
                                         </table>
                                     </div>)
                         })
@@ -106,8 +115,16 @@ class StatBuilder extends Component{
 
 
         return (
+                <Aux>
+                    <div className={classes.demoWrap}>
+                        <h1>WOW-CRAWLER</h1>
+                        <p>Info: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pharetra lobortis nisl sed viverra. Curabitur accumsan lacinia nisl, ut vulputate diam dictum in. Ut at feugiat erat, sit amet mattis nunc. Curabitur non sapien odio. Integer laoreet fringilla risus. Mauris pulvinar nibh dolor, quis dignissim eros venenatis vitae. Maecenas dapibus, diam et facilisis imperdiet, purus magna gravida dolor, at volutpat velit elit ut arcu.
 
-        <div>{StatModal}</div>
+                            Morbi volutpat, justo et blandit faucibus, purus orci laoreet neque, et viverra orci purus nec quam. Fusce a rutrum est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut lobortis purus. Integer vitae orci eu.</p>
+                    </div>
+                    <div className={classes.mainDiv}>{StatModal}</div>
+                </Aux>
+
 
         )
 
