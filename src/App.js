@@ -41,7 +41,7 @@ class App extends Component {
            );
         }
         return (
-            <div className="App demoWrap">
+            <div className="App">
                 <Layout/>
                 {routes}
             </div>
