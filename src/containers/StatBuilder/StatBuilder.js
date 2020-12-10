@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
+
 import classes from "./StatBuilder.module.css";
-import axios from "../../axios-dummy";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import Aux from "../../hoc/Aux";
-import wowImage from "../../assets/wowLogo.png";
+import * as actions from '../../store/actions/index';
 
 class StatBuilder extends Component{
     state = {
@@ -16,23 +17,13 @@ class StatBuilder extends Component{
                 header:'PVE STATS',
                 listElements: ['DUNGEONS','RAIDS']
             }
-        },
-        DummyData: null
+        }
     }
 
     componentDidMount() {
-        axios.get('/pvp.json')
-            .then(response => {
-                const DummyData = [];
-                for (let key in response.data) {
-                    DummyData.push({
-                        ...response.data[key],
-                        id: key
-                    });
-                }
-                this.setState({DummyData: DummyData})
-            });
+        this.props.onFetchData();
     }
+
     // dataPost = () => {
     //     const dummyData = {
     //         rank: 1,
@@ -63,8 +54,8 @@ class StatBuilder extends Component{
         }
 
         let MiniStat = <Spinner />;
-        if(this.state.DummyData) {
-                MiniStat = this.state.DummyData.map(arrayModal => (
+        if(this.props.DummyData) {
+                MiniStat = this.props.DummyData.map(arrayModal => (
                     <tr>
                         <td>{arrayModal.rank}</td>
                         <td>{arrayModal.rating}</td>
@@ -131,4 +122,16 @@ class StatBuilder extends Component{
     }
 }
 
-export default StatBuilder;
+const mapStateToProps = state => {
+    return {
+        DummyData: state.data.DummyData
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onFetchData: () => dispatch(actions.data())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(StatBuilder);
