@@ -1,4 +1,4 @@
-import axios from "../../axios-dummy";
+import axios from "../../axios-data";
 
 import * as actionTypes from './actionTypes';
 

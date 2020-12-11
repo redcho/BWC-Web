@@ -63,7 +63,6 @@ class StatBuilder extends Component{
                     </tr>
                 ))
         }
-
         let MiniStatMultiple = Array(5).fill(MiniStat);
 
 
@@ -107,13 +106,17 @@ class StatBuilder extends Component{
 
         return (
                 <Aux>
-                    <div className={classes.demoWrap}>
+                    <div>
+                    {/*<div className={classes.demoWrap}>*/}
                         <h1>WOW-CRAWLER</h1>
                         <p>Info: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pharetra lobortis nisl sed viverra. Curabitur accumsan lacinia nisl, ut vulputate diam dictum in. Ut at feugiat erat, sit amet mattis nunc. Curabitur non sapien odio. Integer laoreet fringilla risus. Mauris pulvinar nibh dolor, quis dignissim eros venenatis vitae. Maecenas dapibus, diam et facilisis imperdiet, purus magna gravida dolor, at volutpat velit elit ut arcu.
 
                             Morbi volutpat, justo et blandit faucibus, purus orci laoreet neque, et viverra orci purus nec quam. Fusce a rutrum est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut lobortis purus. Integer vitae orci eu.</p>
                     </div>
-                    <div className={classes.mainDiv}>{StatModal}</div>
+                    {/*className={classes.mainDiv}*/}
+                    <div >
+                        {StatModal}
+                    </div>
                 </Aux>
 
 

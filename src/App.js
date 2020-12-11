@@ -5,10 +5,11 @@ import { Redirect, Route, Switch, withRouter } from "react-router-dom";
 import Auth from "./containers/Auth/Auth";
 import Logout from "./containers/Auth/Logout/logout";
 import StatBuilder from "./containers/StatBuilder/StatBuilder";
-import StatTable from "./components/StatTable/StatTable";
+import StatTable from "./containers/StatTable/StatTable";
 
 import { connect } from 'react-redux';
 import * as actions from "./store/actions/index";
+
 
 
 class App extends Component {
