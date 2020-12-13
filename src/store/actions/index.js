@@ -6,4 +6,4 @@ export {
 
 export {
     data
-} from './data'
+} from './pvp/data'

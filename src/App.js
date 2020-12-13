@@ -5,7 +5,7 @@ import { Redirect, Route, Switch, withRouter } from "react-router-dom";
 import Auth from "./containers/Auth/Auth";
 import Logout from "./containers/Auth/Logout/logout";
 import StatBuilder from "./containers/StatBuilder/StatBuilder";
-import StatTable from "./containers/StatTable/StatTable";
+import StatTable from "./containers/TableBuilder/TableBuilder";
 
 import { connect } from 'react-redux';
 import * as actions from "./store/actions/index";
@@ -32,7 +32,7 @@ class App extends Component {
                <Switch>
                    <Route path="/home" component={StatBuilder} />
                    <Route path="/login" component={Auth} />
-                   <Route path="/pvp" component={StatTable} />
+                   <Route path="/pvp/2v2" component={StatTable} />
                    <Route path="/pve" component={StatBuilder} />
                    <Route path="/auctionhouse" component={StatBuilder} />
                    <Route path="/logout" component={Logout} />
