@@ -6,8 +6,8 @@ import { connect } from "react-redux";
 class StatTable extends Component {
     render() {
         let MiniStat = <Spinner />
-        if(this.props.DummyData) {
-            MiniStat = this.props.DummyData.map(arrayModal => (
+        if(this.props.pvp_2v2) {
+            MiniStat = this.props.pvp_2v2.map(arrayModal => (
                 <tr>
                     <td>{arrayModal.rank}</td>
                     <td>{arrayModal.rating}</td>
@@ -47,7 +47,7 @@ class StatTable extends Component {
 }
 const mapStateToProps = state => {
     return {
-        DummyData: state.data.DummyData
+        pvp_2v2: state.data.pvp_2v2
     }
 }
 

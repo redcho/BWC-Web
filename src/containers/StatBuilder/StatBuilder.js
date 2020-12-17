@@ -20,13 +20,15 @@ class StatBuilder extends Component{
         }
     }
 
+
     componentDidMount() {
         this.props.onFetchData();
+        // this.dataPost();
     }
 
     // dataPost = () => {
     //     const dummyData = {
-    //         rank: 1,
+    //         rank: 2,
     //         rating: 3200,
     //         name: 'Lorem',
     //         realm: 'Ipsum',
@@ -37,7 +39,7 @@ class StatBuilder extends Component{
     //         winlose: '1300-400'
     //     }
     //
-    //     axios.post('/pvp.json', dummyData)
+    //     axios.post('/pvp/2v2.json', dummyData)
     //         .then(response => console.log(response))
     //         .catch(error => console.log(error));
     //
@@ -54,8 +56,8 @@ class StatBuilder extends Component{
         }
 
         let MiniStat = <Spinner />;
-        if(this.props.DummyData) {
-                MiniStat = this.props.DummyData.map(arrayModal => (
+        if(this.props.pvp_2v2) {
+                MiniStat = this.props.pvp_2v2.map(arrayModal => (
                     <tr>
                         <td>{arrayModal.rank}</td>
                         <td>{arrayModal.rating}</td>
@@ -127,13 +129,13 @@ class StatBuilder extends Component{
 
 const mapStateToProps = state => {
     return {
-        DummyData: state.data.DummyData
+        pvp_2v2: state.data.pvp_2v2
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchData: () => dispatch(actions.data())
+        onFetchData: () => dispatch(actions.data_2v2())
     }
 }
 
