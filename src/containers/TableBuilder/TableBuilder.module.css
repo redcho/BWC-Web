@@ -1,0 +1,35 @@
+.Menu {
+    text-align: center;
+}
+.Menu ul{
+    list-style-type: none;
+    /*background-color: #1c1d1f;*/
+    padding: 0;
+    display: inline-table;
+    margin-bottom: 4rem;
+
+    -webkit-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.75);
+}
+.Menu ul li {
+    display: inline;
+}
+.Menu ul li a{
+    background-color: #1F364E;
+    display: inline;
+    text-align: center;
+    /*color: #d7d9db;*/
+    color: #DFA039;
+    text-decoration: none;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+
+}
+
+.Menu a:hover,
+.Menu a:active,
+.Menu a.active{
+    /*background-color: rgb(112,3,3);*/
+    background-color: #688DA7;
+}

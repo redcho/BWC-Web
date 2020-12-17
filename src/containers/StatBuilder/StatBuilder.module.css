@@ -1,0 +1,52 @@
+.flexContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flexContainer > div {
+    width: 30%;
+    text-align: center;
+}
+
+.moreLink {
+    font-weight: 600;
+    display: inline;
+    color: #688DA7;
+}
+a.moreLink:hover {
+    color: #1F364E;
+}
+
+.mainDiv{
+    position: relative;
+    overflow: hidden;
+}
+.mainDiv div {
+    position: relative;
+    z-index: 2;
+}
+
+.mainDiv:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 2rem;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.2;
+    background-image: url('../../assets/wowo.jpg');
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: 100% 100%;
+}
+
+.bold {
+    font-weight: bold;
+    font-size: 120%;
+}
+
+
+
