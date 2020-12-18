@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import classes from "./StatTable.module.css";
 import Spinner from "../../../components/UI/Spinner/Spinner";
 import { connect } from "react-redux";
+import * as actions from "../../../store/actions";
 
 class StatTable extends Component {
+    
     render() {
         let MiniStat = <Spinner />
         if(this.props.pvp_2v2) {
@@ -50,5 +52,6 @@ const mapStateToProps = state => {
         pvp_2v2: state.data.pvp_2v2
     }
 }
+
 
 export default connect(mapStateToProps, null)(StatTable);

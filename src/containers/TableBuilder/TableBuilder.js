@@ -7,8 +7,9 @@ import * as actions from "../../store/actions/index";
 
 
 class TableBuilder extends Component {
+    
 
-        render() {
+    render() {
 
 
             return (
@@ -39,7 +40,7 @@ class TableBuilder extends Component {
                             </NavLink>
                         </li>
                     </ul>
-
+                    <StatTable/>
                     <Switch>
                         <Route path="/pvp/2v2" component={StatTable} />
                         <Route path="/pvp/3v3" component={StatTable} />

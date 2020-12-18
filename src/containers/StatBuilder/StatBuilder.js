@@ -135,7 +135,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchData: () => dispatch(actions.data_2v2())
+        onFetchData: () => dispatch(actions.data_2v2)
     }
 }
 
