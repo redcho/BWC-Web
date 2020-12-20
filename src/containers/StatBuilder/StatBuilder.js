@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import classes from "./StatBuilder.module.css";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import Aux from "../../hoc/Aux";
-import * as actions from '../../store/actions/index';
 
 class StatBuilder extends Component{
     state = {
@@ -21,10 +20,6 @@ class StatBuilder extends Component{
     }
 
 
-    componentDidMount() {
-        this.props.onFetchData();
-        // this.dataPost();
-    }
 
     // dataPost = () => {
     //     const dummyData = {
@@ -133,10 +128,4 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onFetchData: () => dispatch(actions.data_2v2)
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(StatBuilder);
+export default connect(mapStateToProps, null)(StatBuilder);

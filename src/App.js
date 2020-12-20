@@ -15,6 +15,7 @@ import * as actions from "./store/actions/index";
 class App extends Component {
     componentDidMount() {
         this.props.onTryAutoSignUp();
+        this.props.onFetchData();
     }
 
     render() {
@@ -59,7 +60,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onTryAutoSignUp:() => dispatch(actions.authCheckState())
+        onTryAutoSignUp:() => dispatch(actions.authCheckState()),
+        onFetchData: () => dispatch(actions.data_2v2())
     }
 };
 

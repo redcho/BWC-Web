@@ -7,6 +7,7 @@ import * as actions from "../../store/actions/index";
 
 
 class TableBuilder extends Component {
+
     
 
     render() {
@@ -19,7 +20,7 @@ class TableBuilder extends Component {
                             <NavLink to={"/pvp/2v2"} exact
                                      activeClassName={classes.active}
                                      key={'2v2'}
-                                     onClick={this.props.pvp_2v2}
+                                     onClick={this.props.pvp_3v3}
                                 >2v2
                             </NavLink>
                         </li>
@@ -40,9 +41,8 @@ class TableBuilder extends Component {
                             </NavLink>
                         </li>
                     </ul>
-                    <StatTable/>
                     <Switch>
-                        <Route path="/pvp/2v2" component={StatTable} />
+                        <Route path="/pvp/2v2" render={() =>(<StatTable pvp_type='pvp_2v2'/>)} />
                         <Route path="/pvp/3v3" component={StatTable} />
                         <Route path="/pvp/rbg" component={StatTable} />
                     </Switch>
