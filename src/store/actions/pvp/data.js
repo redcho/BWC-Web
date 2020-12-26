@@ -26,14 +26,14 @@ export const fetchDataStart = () => {
 export const data_2v2 = () => {
     return dispatch => {
         dispatch(fetchDataStart());
-        axios.get('/development/27/2v2.json')
+        axios.get('/development/character.json')
             .then(response => {
                 const DummyData = [];
                 for (let key in response.data) {
                     if(response.data[key]) {
                         DummyData.push({
                             ...response.data[key],
-                            id: key
+                            id: response.data[key].rank
                         });
                     }
                 }

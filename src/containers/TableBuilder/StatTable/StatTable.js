@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import classes from "./StatTable.module.css";
 import Spinner from "../../../components/UI/Spinner/Spinner";
 import { connect } from "react-redux";
-import Aux from '../../../hoc/Aux';
 class StatTable extends Component {
 
     render() {
@@ -12,23 +11,24 @@ class StatTable extends Component {
         if (this.props.pvp_type) {
             switch (this.props.pvp_type) {
                 case 'pvp_2v2':
-                        MiniStat = this.props.pvp_2v2.map((arrayModal) => (
+                        MiniStat = this.props.pvp_2v2.sort((a, b) => a.id - b.id).map((arrayModal) => (
                              <tr>
                                 <td>{arrayModal.id}</td>
-                                <td>{arrayModal[0].rating}</td>
-                                <td>{arrayModal[0].character.name.name}</td>
-                                <td>{arrayModal[0].realm.slug}</td>
-                                <td>{arrayModal[0].faction}</td>
-                                <td>{arrayModal[0].race}</td>
-                                <td>{arrayModal[0].class}</td>
-                                <td>{arrayModal[0].spec}</td>
-                                <td>{arrayModal[0].winlose}</td>
+                                <td>{arrayModal.rating}</td>
+                                <td>{arrayModal.character.name}</td>
+                                <td>{arrayModal.character.realm.slug}</td>
+                                <td>{arrayModal.faction}</td>
+                                <td>{arrayModal.tier.id}</td>
+                                 <td>{arrayModal.season_match_statistics.played}</td>
+                                <td>{arrayModal.season_match_statistics.lost}</td>
+                                <td>{arrayModal.season_match_statistics.won}</td>
+
                             </tr>
                             )
                             )
             }
         }
-
+console.log(this.props.pvp_2v2)
 
             // case 'pvp_3v3':
             //     MiniStat = this.props.pvp_3v3.map(arrayModal => (
@@ -85,10 +85,10 @@ class StatTable extends Component {
                         <th>Name</th>
                         <th>Realm</th>
                         <th>Faction</th>
-                        <th>Race</th>
-                        <th>Class</th>
-                        <th>Spec</th>
-                        <th>W-L</th>
+                        <th>Tier</th>
+                        <th>Played</th>
+                        <th>Lost</th>
+                        <th>Win</th>
                     </tr>
                     <tbody>
                     {MiniStat}
