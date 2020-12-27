@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ResizeObserver from 'rc-resize-observer';
 import Aux from '../Aux';
 import NavigationItem from '../../components/Navigation/NavigationItem.js';
 import DrawerToggle from '../../components/Navigation/DrawerToggle/DrawerToggle';
@@ -8,16 +9,13 @@ import { connect } from 'react-redux';
 
 
 class Layout extends Component{
-	
+	state = {
+		width: window.innerWidth
+	}
 
-	viewport = () => {
-		var win = window,
-			doc = document,
-			docElem = doc.documentElement,
-			body = doc.getElementsByTagName('body')[0],
-			x = win.innerWidth || docElem.clientWidth || body.clientWidth;
-			return x <= 500 ? <DrawerToggle /> : <NavigationItem isAuth ={this.props.isAuthenticated}/>
+	viewport = (width) => {
 
+			 return width <= 500 ? <DrawerToggle /> : <NavigationItem isAuth ={this.props.isAuthenticated}/>
 	}
 
 
@@ -26,7 +24,12 @@ class Layout extends Component{
 
 		return (
 			<Aux>
-					{this.viewport()}
+				<ResizeObserver
+					onResize={({width}) => {
+						this.setState({width: width})
+					}}
+				>{this.viewport(this.state.width)} </ResizeObserver>
+
 				{/*{window.addEventListener('resize', this.viewport())}*/}
 
 				{/*<NavigationItem*/}
