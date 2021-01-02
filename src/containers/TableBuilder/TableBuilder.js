@@ -2,13 +2,11 @@ import React, { Component } from "react";
 import classes from "./TableBuilder.module.css";
 import { NavLink, Route, Switch } from "react-router-dom";
 import StatTable from "./StatTable/StatTable";
-import { connect } from "react-redux";
-import * as actions from "../../store/actions/index";
 
 
 class TableBuilder extends Component {
 
-    
+
 
     render() {
 
@@ -20,7 +18,7 @@ class TableBuilder extends Component {
                             <NavLink to={"/pvp/2v2"} exact
                                      activeClassName={classes.active}
                                      key={'2v2'}
-                                     onClick={this.props.pvp_3v3}
+                                     onClick={this.props.pvp_2v2}
                                 >2v2
                             </NavLink>
                         </li>
@@ -43,7 +41,7 @@ class TableBuilder extends Component {
                     </ul>
                     <Switch>
                         <Route path="/pvp/2v2" render={() =>(<StatTable pvp_type='pvp_2v2'/>)} />
-                        <Route path="/pvp/3v3" component={StatTable} />
+                        <Route path="/pvp/3v3" render={() =>(<StatTable pvp_type='pvp_3v3'/>)} />
                         <Route path="/pvp/rbg" component={StatTable} />
                     </Switch>
                 </div>
@@ -52,13 +50,7 @@ class TableBuilder extends Component {
 
     }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        pvp_2v2: () => dispatch({type: actions.data_2v2()}),
-        pvp_3v3: () => dispatch({type: actions.data_3v3()}),
-        pvp_rbg: () => dispatch({type: actions.data_rbg()})
-    }
-}
 
 
-export default connect(null,mapDispatchToProps)(TableBuilder);
+
+export default TableBuilder;

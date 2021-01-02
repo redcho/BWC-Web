@@ -1,5 +1,5 @@
 ul {
-    margin: 0;
+    margin: auto;
 }
 li {
     display: block;
@@ -24,6 +24,7 @@ a.active{
     background-color: #688DA7;
 }
 
+
 @media (min-width: 500px) {
     ul {
         margin: 2rem 0;
@@ -37,7 +38,6 @@ a.active{
         font-size: 2rem;
         display: inline-block;
         text-align: center;
-        /*color: #d7d9db;*/
         color: #DFA039;
         text-decoration: none;
         width: 16.66%;
@@ -47,8 +47,6 @@ a.active{
     a:hover,
     a:active,
     a.active{
-        /*background-color: rgb(112,3,3);*/
         background-color: #688DA7;
     }
 }
-

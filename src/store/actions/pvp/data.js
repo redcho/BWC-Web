@@ -9,6 +9,12 @@ export const fetchDataSuccess = (data) => {
     };
 };
 
+export const fetchDataSuccess_3v3 = (data) => {
+    return {
+        type: actionTypes.FETCH_DATA_SUCCESS_3v3,
+        data: data
+    };
+};
 
 export const fetchDataFail = (error) => {
     return {
@@ -44,19 +50,23 @@ export const data_2v2 = () => {
     }
 };
 
+
+
+
 export const data_3v3 = () => {
     return dispatch => {
         dispatch(fetchDataStart());
-        axios.get('pvp/3v3.json')
+        axios.get('/pvp/2v2.json')
             .then(response => {
                 const DummyData = [];
                 for (let key in response.data) {
                     DummyData.push({
                         ...response.data[key],
-                        id: data_3v3[key]
+                        id: response.data[key]
                     });
                 }
-                dispatch(fetchDataSuccess(DummyData));
+                console.log(DummyData);
+                dispatch(fetchDataSuccess_3v3(DummyData));
             }).catch(err => {
             dispatch(fetchDataFail(err));
         });
@@ -82,4 +92,3 @@ export const data_rbg = () => {
         });
     }
 };
-

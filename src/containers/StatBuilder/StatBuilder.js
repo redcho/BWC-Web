@@ -111,7 +111,7 @@ class StatBuilder extends Component{
                             Morbi volutpat, justo et blandit faucibus, purus orci laoreet neque, et viverra orci purus nec quam. Fusce a rutrum est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut lobortis purus. Integer vitae orci eu.</p>
                     </div>
                     {/*className={classes.mainDiv}*/}
-                    <div >
+                    <div>
                         {StatModal}
                     </div>
                 </Aux>

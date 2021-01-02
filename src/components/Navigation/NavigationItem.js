@@ -44,4 +44,3 @@ const NavigationItem = (props) => {
 };
 
 export default NavigationItem;
-

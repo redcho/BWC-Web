@@ -9,31 +9,29 @@ import { connect } from 'react-redux';
 
 
 class Layout extends Component{
-	state = {
-		width: window.innerWidth
+
+state = {
+		width: window.innerWidth,
+		showNavItem: true
 	}
-
-	viewport = (width) => {
-
-			 return width <= 500 ? <DrawerToggle /> : <NavigationItem isAuth ={this.props.isAuthenticated}/>
-	}
-
-
+NavItemClosedHandler = () => {
+	this.setState({showNavItem: !this.state.showNavItem});
+}
 	render() {
-
-
 		return (
 			<Aux>
-				<ResizeObserver
-					onResize={({width}) => {
-						this.setState({width: width})
-					}}
-				>{this.viewport(this.state.width)} </ResizeObserver>
-
-				{/*{window.addEventListener('resize', this.viewport())}*/}
-
-				{/*<NavigationItem*/}
-				{/*isAuth ={this.props.isAuthenticated}/>*/}
+				{
+					<ResizeObserver
+						onResize={({width}) => {
+						{this.setState({width: width})}
+						}}>
+						<div>
+						{	this.state.width <= 500 ?
+								<DrawerToggle open={this.state.showNavItem} clicked={this.NavItemClosedHandler}/> :
+								<NavigationItem isAuth ={this.props.isAuthenticated}/>}
+						</div>
+					</ResizeObserver>
+				}
 			</Aux>
 		);
 	};
