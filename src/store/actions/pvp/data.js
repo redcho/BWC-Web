@@ -56,15 +56,21 @@ export const data_2v2 = () => {
 export const data_3v3 = () => {
     return dispatch => {
         dispatch(fetchDataStart());
-        axios.get('/pvp/2v2.json')
+        axios.get('/development/27/2v2.json')
             .then(response => {
                 const DummyData = [];
+                console.log(response.data);
                 for (let key in response.data) {
+                if(response.data[key]) {
+                  for (let j=0; j<response.data[key].length; j++ ) {
                     DummyData.push({
-                        ...response.data[key],
-                        id: response.data[key]
-                    });
+                      ...response.data[key][j],
+                      id: response.data[key][j]
+                    })
+                  }
                 }
+              }
+               DummyData.filter(el => el != {});
                 console.log(DummyData);
                 dispatch(fetchDataSuccess_3v3(DummyData));
             }).catch(err => {
