@@ -17,6 +17,7 @@ class App extends Component {
         this.props.onTryAutoSignUp();
         this.props.pvp_2v2();
         this.props.pvp_3v3();
+        this.props.pvp_rbg();
     }
 
     render() {
@@ -63,8 +64,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onTryAutoSignUp:() => dispatch(actions.authCheckState()),
-        pvp_2v2: () => dispatch(actions.data_2v2()),
-        pvp_3v3: () => dispatch(actions.data_3v3())
+        pvp_2v2: () => dispatch(actions.data_bracket('2v2')),
+        pvp_3v3: () => dispatch(actions.data_bracket('3v3')),
+        pvp_rbg: () => dispatch(actions.data_bracket('rbg'))
     }
 };
 
