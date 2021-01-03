@@ -19,15 +19,12 @@ const fetchDataSuccess = (state,action) => {
 }
 
 const fetchDataSuccess_2v2 = (state,action) => {
-  console.log('2v2');
      return updatedObject(state, {pvp_2v2: action.data})
 }
 const fetchDataSuccess_3v3 = (state,action) => {
-  console.log('3v3');
      return updatedObject(state, {pvp_3v3: action.data})
 }
 const fetchDataSuccess_rbg = (state,action) => {
-  console.log('rbg');
      return updatedObject(state, {pvp_rbg: action.data})
 }
 
@@ -36,7 +33,6 @@ const fetchDataFail = (state, action) => {
 }
 
 const reducer = (state= initialState, action) => {
-  console.log(action.type);
     switch (action.type) {
         // case actionTypes.FETCH_DATA_START: return fetchDataStart(state, action);
         case actionTypes.FETCH_DATA_SUCCESS: return fetchDataSuccess(state, action);

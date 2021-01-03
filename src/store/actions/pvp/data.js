@@ -18,7 +18,6 @@ export const fetchDataSuccess = (data) => {
 // };
 
 export const fetchDataSuccess_bracket = (data, pvp_type) => {
-  console.log("PVP_TYPE::: " + pvp_type);
   switch(pvp_type) {
     case "2v2": return {
       type: actionTypes.FETCH_DATA_SUCCESS_2V2,
@@ -72,7 +71,6 @@ export const fetchDataFail = (error) => {
 export const data_bracket = (bracket) => {
   return dispatch => {
       // dispatch(fetchDataStart());
-      console.log(bracket + '************************');
       axios.get('/development/27/' + bracket + '.json')
           .then(response => {
               const DummyData = [];
@@ -87,7 +85,6 @@ export const data_bracket = (bracket) => {
               }
             }
             console.log(DummyData);
-            console.log("dkfjghdkjfghdkjfgh");
             dispatch(fetchDataSuccess_bracket(DummyData, bracket));
           }).catch(err => {
           dispatch(fetchDataFail(err));
