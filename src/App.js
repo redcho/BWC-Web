@@ -35,8 +35,6 @@ class App extends Component {
                <Switch>
                    <Route path="/home" component={StatBuilder} />
                    <Route path="/login" component={Auth} />
-                   // <Route path="/pvp/2v2" component={StatTable} />
-                   //  <Route path="/pvp/3v3" component={StatTable} />
                    <Route path="/pve" component={StatBuilder} />
                    <Route path="/auctionhouse" component={StatBuilder} />
                    <Route path="/logout" component={Logout} />
