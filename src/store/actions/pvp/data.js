@@ -28,11 +28,37 @@ export const fetchDataSuccess_bracket = (data, pvp_type) => {
   }
 }
 
+export const fetchDataSuccessCharacter = (data) => {
+  return {
+    type: actionTypes.FETCH_DATA_SUCCESS_CHARACTER,
+    data: data
+  }
+};
+
 export const fetchDataFail = (error) => {
     return {
         type: actionTypes.FETCH_DATA_FAIL,
         error: error
     };
+};
+
+
+export const dataCharacter = () => {
+  return dispatch => {
+    axios.get('/development/character.json')
+      .then(response => {
+        const characterData = [];
+          for (let key in response.data) {
+            characterData.push({
+              ...response.data[key],
+              id: key
+            });
+          }
+          dispatch(fetchDataSuccessCharacter(characterData));
+      }).catch( err => {
+        dispatch(fetchDataFail(err));
+      });
+  }
 };
 
 export const data_bracket = (bracket) => {

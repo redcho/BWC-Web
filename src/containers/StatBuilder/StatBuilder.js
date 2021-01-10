@@ -20,27 +20,28 @@ class StatBuilder extends Component{
     }
 
 
-
-    // dataPost = () => {
-    //     const dummyData = {
-    //         rank: 2,
-    //         rating: 3200,
-    //         name: 'Lorem',
-    //         realm: 'Ipsum',
-    //         faction: 'Horde',
-    //         race: 'Human',
-    //         class: 'warlock',
-    //         spec: 'Destruction',
-    //         winlose: '1300-400'
-    //     }
-    //
-    //     axios.post('/pvp/2v2.json', dummyData)
-    //         .then(response => console.log(response))
-    //         .catch(error => console.log(error));
-    //
-    // }
-
     render() {
+
+      let pvp2v2id = [];
+
+      for(let key in this.props.pvp_2v2) {
+        pvp2v2id.push(
+          this.props.pvp_2v2[key].character.id
+        )
+      }
+      // if(pvp2v2id) {
+      //   console.log(pvp2v2id);
+      // }
+      if (this.props.data_character) {
+        console.log(pvp2v2id);
+        console.log(this.props.data_character);
+        let filteredPvp2v2 = this.props.data_character.filter(pvp2Chars => {
+          return pvp2v2id.indexOf(pvp2Chars.character.id) !== -1;
+        });
+          console.log(filteredPvp2v2);
+      }
+      // console.log(this.props.data_character);
+
         let arrayStatModal = [];
 
         for(let key in this.state.StatModal) {
@@ -124,8 +125,9 @@ class StatBuilder extends Component{
 
 const mapStateToProps = state => {
     return {
-        pvp_2v2: state.data.pvp_2v2
+        pvp_2v2: state.data.pvp_2v2,
+        data_character: state.data.data_character
     }
-}
+};
 
 export default connect(mapStateToProps, null)(StatBuilder);

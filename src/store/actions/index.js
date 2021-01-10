@@ -6,5 +6,6 @@ export {
 } from './auth';
 
 export {
-    data_bracket
+    data_bracket,
+    dataCharacter
 } from './pvp/data'

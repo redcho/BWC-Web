@@ -8,7 +8,6 @@ import { connect } from "react-redux";
 class StatTable extends Component {
 
     render() {
-
         let MiniStat = <Spinner />
         if (this.props.pvp_type) {
             switch (this.props.pvp_type) {
@@ -106,6 +105,7 @@ class StatTable extends Component {
 }
 const mapStateToProps = state => {
     return {
+        data_character: state.data.data_character,
         pvp_2v2: state.data.pvp_2v2,
         pvp_3v3: state.data.pvp_3v3,
         pvp_rbg: state.data.pvp_rbg

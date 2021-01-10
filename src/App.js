@@ -14,6 +14,7 @@ import * as actions from "./store/actions/index";
 
 class App extends Component {
     componentDidMount() {
+        this.props.dataCharacter();
         this.props.onTryAutoSignUp();
         this.props.pvp_2v2();
         this.props.pvp_3v3();
@@ -36,6 +37,7 @@ class App extends Component {
                    <Route path="/home" component={StatBuilder} />
                    <Route path="/login" component={Auth} />
                    <Route path="/pve" component={StatBuilder} />
+                   <Route path="/pvp" component={StatTable} />
                    <Route path="/auctionhouse" component={StatBuilder} />
                    <Route path="/logout" component={Logout} />
                    <Route path="/stats" component={StatBuilder} />
@@ -61,7 +63,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onTryAutoSignUp:() => dispatch(actions.authCheckState()),
+        dataCharacter: () => dispatch(actions.dataCharacter()),
+        onTryAutoSignUp: () => dispatch(actions.authCheckState()),
         pvp_2v2: () => dispatch(actions.data_bracket('2v2')),
         pvp_3v3: () => dispatch(actions.data_bracket('3v3')),
         pvp_rbg: () => dispatch(actions.data_bracket('rbg'))
