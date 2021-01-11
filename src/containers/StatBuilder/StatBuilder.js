@@ -22,25 +22,16 @@ class StatBuilder extends Component{
 
     render() {
 
-      let pvp2v2id = [];
-
-      for(let key in this.props.pvp_2v2) {
-        pvp2v2id.push(
-          this.props.pvp_2v2[key].character.id
-        )
-      }
-      // if(pvp2v2id) {
-      //   console.log(pvp2v2id);
+      console.log(this.props.pvp_2v2);
+      // if (this.props.data_character) {
+      //   console.log(pvp2v2id + "pvp2id");
+      //   console.log(this.props.data_character);
+      //   let filteredPvp2v2 = this.props.data_character.filter(pvp2Chars => {
+      //     return pvp2v2id.indexOf(pvp2Chars.character.id) !== -1;
+      //   });
+      //     console.log(filteredPvp2v2);
       // }
-      if (this.props.data_character) {
-        console.log(pvp2v2id);
-        console.log(this.props.data_character);
-        let filteredPvp2v2 = this.props.data_character.filter(pvp2Chars => {
-          return pvp2v2id.indexOf(pvp2Chars.character.id) !== -1;
-        });
-          console.log(filteredPvp2v2);
-      }
-      // console.log(this.props.data_character);
+
 
         let arrayStatModal = [];
 

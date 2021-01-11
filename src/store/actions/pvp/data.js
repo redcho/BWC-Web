@@ -69,11 +69,13 @@ export const data_bracket = (bracket) => {
               for (let key in response.data) {
               if(response.data[key]) {
                 for (let j=0; j<response.data[key].length; j++ ) {
-                  DummyData.push({
-                    ...response.data[key][j],
-                    id: response.data[key][j]
-                  })
+                  // console.log(response.data[key][j].character.id)
+                  DummyData.push(
+                    response.data[key][j].character.id
+                    // id: response.data[key][j]
+                  )
                 }
+                // console.log(DummyData)
               }
             }
             dispatch(fetchDataSuccess_bracket(DummyData, bracket));
