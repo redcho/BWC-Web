@@ -50,8 +50,7 @@ export const dataCharacter = () => {
         const characterData = [];
           for (let key in response.data) {
             characterData.push({
-              ...response.data[key],
-              id: key
+              ...response.data[key]
             });
           }
           dispatch(fetchDataSuccessCharacter(characterData));
@@ -69,13 +68,10 @@ export const data_bracket = (bracket) => {
               for (let key in response.data) {
               if(response.data[key]) {
                 for (let j=0; j<response.data[key].length; j++ ) {
-                  // console.log(response.data[key][j].character.id)
                   DummyData.push(
-                    response.data[key][j].character.id
-                    // id: response.data[key][j]
+                    response.data[key][j]
                   )
                 }
-                // console.log(DummyData)
               }
             }
             dispatch(fetchDataSuccess_bracket(DummyData, bracket));

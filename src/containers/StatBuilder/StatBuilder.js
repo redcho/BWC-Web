@@ -19,19 +19,39 @@ class StatBuilder extends Component{
         }
     }
 
+    filteringData = (data,dataChar) => {
+      let pvpData = data;
+      let DataChar = dataChar;
+      let pvpId = [];
+      let merged = [];
+      for(let key in pvpData) {
+        pvpId.push(
+          pvpData[key].character_id
+        )
+      }
+      // console.log(pvpId);
+      // console.log(DataChar);
+      if (DataChar && pvpId) {
+        let filteredPvp2v2 = DataChar.filter(pvp2Chars => {
+          return pvpId.indexOf(pvp2Chars.id) !== -1;
+        });
+        // console.log(filteredPvp2v2);
+        for(let i=0; i<pvpData.length; i++) {
+          merged.push({
+           ...pvpData[i],
+           ...(filteredPvp2v2.find((itmInner) => itmInner.id === pvpData[i].character_id))}
+          );
+        }
+         console.log(merged);
+      }
+    }
+
 
     render() {
 
-      console.log(this.props.pvp_2v2);
-      // if (this.props.data_character) {
-      //   console.log(pvp2v2id + "pvp2id");
-      //   console.log(this.props.data_character);
-      //   let filteredPvp2v2 = this.props.data_character.filter(pvp2Chars => {
-      //     return pvp2v2id.indexOf(pvp2Chars.character.id) !== -1;
-      //   });
-      //     console.log(filteredPvp2v2);
-      // }
-
+      this.filteringData(this.props.pvp_2v2,this.props.data_character);
+      // console.log(this.props.pvp_2v2);
+      // console.log(this.props.data_character);
 
         let arrayStatModal = [];
 
