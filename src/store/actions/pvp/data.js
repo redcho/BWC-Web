@@ -42,7 +42,6 @@ export const fetchDataFail = (error) => {
     };
 };
 
-
 export const dataCharacter = () => {
   return dispatch => {
     axios.get('/development/character.json')

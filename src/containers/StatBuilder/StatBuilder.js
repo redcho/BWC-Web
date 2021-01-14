@@ -49,10 +49,8 @@ class StatBuilder extends Component{
 
     render() {
 
-      this.filteringData(this.props.pvp_2v2,this.props.data_character);
-      // console.log(this.props.pvp_2v2);
       // console.log(this.props.data_character);
-
+        this.filteringData(this.props.pvp_2v2,this.props.data_character);
         let arrayStatModal = [];
 
         for(let key in this.state.StatModal) {
@@ -137,7 +135,7 @@ class StatBuilder extends Component{
 const mapStateToProps = state => {
     return {
         pvp_2v2: state.data.pvp_2v2,
-        data_character: state.data.data_character
+        data_character: state.data.data_character,
     }
 };
 

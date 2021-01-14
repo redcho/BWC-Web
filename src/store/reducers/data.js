@@ -44,6 +44,8 @@ const reducer = (state= initialState, action) => {
         case actionTypes.FETCH_DATA_SUCCESS_CHARACTER: return fetchDataSuccess_character(state, action);
 
           break;
+
+          break;
         case actionTypes.FETCH_DATA_FAIL: return fetchDataFail(state, action);
 
 
