@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import classes from "./StatBuilder.module.css";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import Aux from "../../hoc/Aux";
+import * as actions from "../../store/actions/index";
 
 class StatBuilder extends Component{
     state = {
@@ -18,6 +19,7 @@ class StatBuilder extends Component{
             }
         }
     }
+
 
     filteringData = (data,dataChar) => {
       let pvpData = data;
@@ -42,15 +44,15 @@ class StatBuilder extends Component{
            ...(filteredPvp2v2.find((itmInner) => itmInner.id === pvpData[i].character_id))}
           );
         }
-         console.log(merged);
+        console.log(merged);
       }
     }
 
 
     render() {
 
-      // console.log(this.props.data_character);
-        this.filteringData(this.props.pvp_2v2,this.props.data_character);
+      // console.log(this.props.mergedDataList);
+        this.filteringData(this.props.pvp_2v2, this.props.data_character);
         let arrayStatModal = [];
 
         for(let key in this.state.StatModal) {
@@ -136,7 +138,14 @@ const mapStateToProps = state => {
     return {
         pvp_2v2: state.data.pvp_2v2,
         data_character: state.data.data_character,
+        mergedDataList: state.data.mergedDataList
     }
 };
 
-export default connect(mapStateToProps, null)(StatBuilder);
+const mapDispatchToProps = dispatch => {
+  return {
+        mergeData: (data) => dispatch(actions.mergeData(data))
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(StatBuilder);

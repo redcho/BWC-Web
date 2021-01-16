@@ -7,5 +7,6 @@ export {
 
 export {
     data_bracket,
-    dataCharacter
+    dataCharacter,
+    mergeData
 } from './pvp/data'
