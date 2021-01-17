@@ -12,10 +12,6 @@ class StatBuilder extends Component{
             pvp: {
                 header: 'PVP STATS',
                 listElements: ['2v2','3v3','RBG']
-            },
-            mostUsed:{
-                header:'PVE STATS',
-                listElements: ['DUNGEONS','RAIDS']
             }
         }
     }
@@ -31,30 +27,25 @@ class StatBuilder extends Component{
           pvpData[key].character_id
         )
       }
-      // console.log(pvpId);
-      // console.log(DataChar);
-      if (DataChar && pvpId) {
+      if (DataChar && pvpId && pvpData) {
         let filteredPvp2v2 = DataChar.filter(pvp2Chars => {
           return pvpId.indexOf(pvp2Chars.id) !== -1;
         });
-        // console.log(filteredPvp2v2);
         for(let i=0; i<pvpData.length; i++) {
           merged.push({
            ...pvpData[i],
            ...(filteredPvp2v2.find((itmInner) => itmInner.id === pvpData[i].character_id))}
           );
         }
-        console.log(merged);
       }
+      return merged.slice(0,5)
     }
 
 
     render() {
-
-      // console.log(this.props.mergedDataList);
-        this.filteringData(this.props.pvp_2v2, this.props.data_character);
+        // this.filteringData(this.props.pvp_2v2, this.props.data_character);
         let arrayStatModal = [];
-
+        console.log(this.state.StatModal)
         for(let key in this.state.StatModal) {
             arrayStatModal.push({
                 id: key,
@@ -63,23 +54,19 @@ class StatBuilder extends Component{
         }
 
         let MiniStat = <Spinner />;
-        if(this.props.pvp_2v2) {
-                MiniStat = this.props.pvp_2v2.map(arrayModal => (
+        if(this.filteringData(this.props.pvp_2v2, this.props.data_character)) {
+                MiniStat = this.filteringData(this.props.pvp_2v2, this.props.data_character).map(arrayModal => (
                     <tr>
                         <td>{arrayModal.rank}</td>
                         <td>{arrayModal.rating}</td>
                         <td>{arrayModal.name}</td>
+                        <td>{arrayModal.realm.slug}</td>
                     </tr>
                 ))
         }
-        let MiniStatMultiple = Array(5).fill(MiniStat);
-
-
 
         let StatModal = arrayStatModal.map(arrayModal => (
             <div>
-                {/*{arrayModal.config.header === 'PVE STATS' ?*/}
-                {/*<img src={pveHunter} alt="PVE"/>: <img src={arena} alt="ArenaPVP"/>}*/}
                 <h1>{arrayModal.config.header}</h1>
                 <div className={classes.flexContainer}>
                     {
@@ -92,14 +79,15 @@ class StatBuilder extends Component{
                                                     <th>Rank</th>
                                                     <th>Rating</th>
                                                     <th>Name</th>
+                                                    <th>Realm</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {MiniStatMultiple}
+                                                {MiniStat}
                                             </tbody>
                                             <tfoot>
                                                 <tr>
-                                                    <td colSpan="3"><a className={classes.moreLink} href="">SEE MORE >>></a></td>
+                                                    <td colSpan="4"><a className={classes.moreLink} href="">SEE MORE >>></a></td>
                                                 </tr>
                                             </tfoot>
                                         </table>
@@ -142,10 +130,5 @@ const mapStateToProps = state => {
     }
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-        mergeData: (data) => dispatch(actions.mergeData(data))
-  }
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(StatBuilder);
+export default connect(mapStateToProps, null)(StatBuilder);

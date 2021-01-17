@@ -42,21 +42,6 @@ export const fetchDataFail = (error) => {
     };
 };
 
-export const mergeDataSuccess = (data) => {
-  return {
-    type: actionTypes.MERGE_DATA_SUCCESS,
-    data: data
-  }
-}
-
-export const mergeData = (data) => {
-  return dispatch => {
-    const mergedData = data;
-    dispatch(mergeDataSuccess(mergedData));
-  }
-
-}
-
 export const dataCharacter = () => {
   return dispatch => {
     axios.get('/development/character.json')

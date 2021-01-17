@@ -7,7 +7,6 @@ const initialState = {
     pvp_rbg: null,
     rbg: null,
     data_character: null,
-    mergedDataList: null,
     loading: false,
     error: null
 }
@@ -34,9 +33,6 @@ const fetchDataSuccess_character = (state,action) => {
 const fetchDataFail = (state, action) => {
     return updatedObject(state, {error: action.error, loading: false})
 }
-const mergeDataSuccess = (state, action) => {
-  return updatedObject(state, {mergedDataList: action.data})
-}
 
 const reducer = (state= initialState, action) => {
     switch (action.type) {
@@ -46,7 +42,6 @@ const reducer = (state= initialState, action) => {
         case actionTypes.FETCH_DATA_SUCCESS_3V3: return fetchDataSuccess_3v3(state, action);
         case actionTypes.FETCH_DATA_SUCCESS_RBG: return fetchDataSuccess_rbg(state, action);
         case actionTypes.FETCH_DATA_SUCCESS_CHARACTER: return fetchDataSuccess_character(state, action);
-        case actionTypes.MERGE_DATA_SUCCESS: return mergeDataSuccess(state, action);
 
           break;
 
