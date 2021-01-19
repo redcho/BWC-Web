@@ -3,25 +3,83 @@ import classes from "./StatTable.module.css";
 import Spinner from "../../../components/UI/Spinner/Spinner";
 import { connect } from "react-redux";
 
+
+
 class StatTable extends Component {
+
     render() {
         let MiniStat = <Spinner />
-        if(this.props.DummyData) {
-            MiniStat = this.props.DummyData.map(arrayModal => (
-                <tr>
-                    <td>{arrayModal.rank}</td>
-                    <td>{arrayModal.rating}</td>
-                    <td>{arrayModal.name}</td>
-                    <td>{arrayModal.realm}</td>
-                    <td>{arrayModal.faction}</td>
-                    <td>{arrayModal.race}</td>
-                    <td>{arrayModal.class}</td>
-                    <td>{arrayModal.spec}</td>
-                    <td>{arrayModal.winlose}</td>
-                </tr>
-            ));
+        if (this.props.pvp_type) {
+            switch (this.props.pvp_type) {
+                case 'pvp_2v2':
+
+                        MiniStat = this.props.pvp_2v2.sort((a, b) => a.id - b.id).map((arrayModal) => (
+                             <tr>
+                                <td>{arrayModal.id}</td>
+                                <td>{arrayModal.rating}</td>
+                                <td>{arrayModal.character.name}</td>
+                                <td>{arrayModal.character.realm.slug}</td>
+                                <td>{arrayModal.faction}</td>
+                                <td>{arrayModal.tier.id}</td>
+                                 <td>{arrayModal.season_match_statistics.played}</td>
+                                <td>{arrayModal.season_match_statistics.lost}</td>
+                                <td>{arrayModal.season_match_statistics.won}</td>
+
+                            </tr>
+                            )
+                            )
+                            break;
+                            case 'pvp_3v3':
+                                MiniStat = this.props.pvp_3v3.map(arrayModal => (
+                                    <tr>
+                                        <td>{arrayModal.rank}</td>
+                                        <td>{arrayModal.rating}</td>
+                                        <td>{arrayModal.realm}</td>
+                                        <td>{arrayModal.faction}</td>
+                                        <td>{arrayModal.name}</td>
+                                        <td>{arrayModal.race}</td>
+                                        <td>{arrayModal.class}</td>
+                                        <td>{arrayModal.spec}</td>
+                                        <td>{arrayModal.winlose}</td>
+                                    </tr>
+                                ));
+                                break;
+            }
         }
-        let MiniStatMultiple = Array(100).fill(MiniStat);
+
+
+            // case 'pvp_rbg':
+            //     MiniStat = this.props.pvp_rbg.map(arrayModal => (
+            //         <tr>
+            //             <td>{arrayModal.rank}</td>
+            //             <td>{arrayModal.rating}</td>
+            //             <td>{arrayModal.name}</td>
+            //             <td>{arrayModal.realm}</td>
+            //             <td>{arrayModal.faction}</td>
+            //             <td>{arrayModal.race}</td>
+            //             <td>{arrayModal.class}</td>
+            //             <td>{arrayModal.spec}</td>
+            //             <td>{arrayModal.winlose}</td>
+            //         </tr>
+            //     ));
+
+
+        // if(this.props.pvp_type) {
+        //     MiniStat = this.props.pvp_2v2.map(arrayModal => (
+        //         <tr>
+        //             <td>{arrayModal.rank}</td>
+        //             <td>{arrayModal.rating}</td>
+        //             <td>{arrayModal.name}</td>
+        //             <td>{arrayModal.realm}</td>
+        //             <td>{arrayModal.faction}</td>
+        //             <td>{arrayModal.race}</td>
+        //             <td>{arrayModal.class}</td>
+        //             <td>{arrayModal.spec}</td>
+        //             <td>{arrayModal.winlose}</td>
+        //         </tr>
+        //     ));
+        // }
+
         return (
             <div>
                 <table className={classes.StatTable}>
@@ -31,13 +89,13 @@ class StatTable extends Component {
                         <th>Name</th>
                         <th>Realm</th>
                         <th>Faction</th>
-                        <th>Race</th>
-                        <th>Class</th>
-                        <th>Spec</th>
-                        <th>W-L</th>
+                        <th>Tier</th>
+                        <th>Played</th>
+                        <th>Lost</th>
+                        <th>Win</th>
                     </tr>
                     <tbody>
-                    {MiniStatMultiple}
+                    {MiniStat}
                     </tbody>
                 </table>
             </div>
@@ -47,8 +105,12 @@ class StatTable extends Component {
 }
 const mapStateToProps = state => {
     return {
-        DummyData: state.data.DummyData
+        data_character: state.data.data_character,
+        pvp_2v2: state.data.pvp_2v2,
+        pvp_3v3: state.data.pvp_3v3,
+        pvp_rbg: state.data.pvp_rbg
     }
 }
+
 
 export default connect(mapStateToProps, null)(StatTable);

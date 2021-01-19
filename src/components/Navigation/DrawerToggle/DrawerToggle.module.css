@@ -1,0 +1,36 @@
+.DrawerToggle {
+    margin: auto;
+    /*width: 40px;*/
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: #1F364E;
+
+    -webkit-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.75);
+}
+
+.DrawerToggle div {
+    margin: 2px;
+    width: 10%;
+    height: 3px;
+    background-color: white;
+}
+
+.Hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-100%);
+  transition: all 0.15s ease-out
+}
+
+.Open {
+   transform: translateX(0);
+  transition: all 0.15s ease-out;
+}

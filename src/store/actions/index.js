@@ -1,3 +1,4 @@
+
 export {
     auth,
     logout,
@@ -5,5 +6,6 @@ export {
 } from './auth';
 
 export {
-    data
+    data_bracket,
+    dataCharacter
 } from './pvp/data'
