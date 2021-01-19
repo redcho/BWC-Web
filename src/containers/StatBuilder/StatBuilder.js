@@ -8,12 +8,7 @@ import * as actions from "../../store/actions/index";
 
 class StatBuilder extends Component{
     state = {
-        StatModal: {
-            pvp: {
-                header: 'PVP STATS',
                 listElements: ['2v2','3v3','RBG']
-            }
-        }
     }
 
 
@@ -44,14 +39,7 @@ class StatBuilder extends Component{
 
     render() {
         // this.filteringData(this.props.pvp_2v2, this.props.data_character);
-        let arrayStatModal = [];
-        console.log(this.state.StatModal)
-        for(let key in this.state.StatModal) {
-            arrayStatModal.push({
-                id: key,
-                config: this.state.StatModal[key]
-            })
-        }
+
 
         let MiniStat = <Spinner />;
         if(this.filteringData(this.props.pvp_2v2, this.props.data_character)) {
@@ -65,13 +53,13 @@ class StatBuilder extends Component{
                 ))
         }
 
-        let StatModal = arrayStatModal.map(arrayModal => (
+        let StatModal = this.state.listElements.map(arrayModal => (
             <div>
-                <h1>{arrayModal.config.header}</h1>
+                <h1>PVP STATS</h1>
                 <div className={classes.flexContainer}>
                     {
-                        arrayModal.config.listElements.map(elm =>{
-                            return  (<div key={arrayModal.config.listElements[elm]}>
+                        this.state.listElements.map(elm =>{
+                            return  (<div key={arrayModal[elm]}>
                                         <h2>{elm}</h2>
                                         <table>
                                             <thead>
