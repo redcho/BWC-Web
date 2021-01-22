@@ -7,78 +7,80 @@ import { connect } from "react-redux";
 
 class StatTable extends Component {
 
+    filteringData = (data,dataChar) => {
+        let pvpData = data;
+        let DataChar = dataChar;
+        let pvpId = [];
+        let merged = [];
+        for(let key in pvpData) {
+          pvpId.push(
+            pvpData[key].character_id
+          )
+        }
+        if (DataChar && pvpId && pvpData) {
+          let filteredPvp2v2 = DataChar.filter(pvp2Chars => {
+            return pvpId.indexOf(pvp2Chars.id) !== -1;
+          });
+          for(let i=0; i<pvpData.length; i++) {
+            merged.push({
+             ...pvpData[i],
+             ...(filteredPvp2v2.find((itmInner) => itmInner.id === pvpData[i].character_id))}
+            );
+          }
+        }
+           return merged
+      }
+
     render() {
+        console.log(this.filteringData(this.props.pvp_rbg, this.props.data_character));
         let MiniStat = <Spinner />
-        if (this.props.pvp_type) {
             switch (this.props.pvp_type) {
-                case 'pvp_2v2':
-
-                        MiniStat = this.props.pvp_2v2.sort((a, b) => a.id - b.id).map((arrayModal) => (
-                             <tr>
-                                <td>{arrayModal.id}</td>
-                                <td>{arrayModal.rating}</td>
-                                <td>{arrayModal.character.name}</td>
-                                <td>{arrayModal.character.realm.slug}</td>
-                                <td>{arrayModal.faction}</td>
-                                <td>{arrayModal.tier.id}</td>
-                                 <td>{arrayModal.season_match_statistics.played}</td>
-                                <td>{arrayModal.season_match_statistics.lost}</td>
-                                <td>{arrayModal.season_match_statistics.won}</td>
-
-                            </tr>
-                            )
-                            )
+                            case 'PVP_2v2':
+                                    MiniStat = this.filteringData(this.props.pvp_2v2, this.props.data_character).map(arrayModal => (
+                                        <tr>
+                                            <td>{arrayModal.rank}</td>
+                                            <td>{arrayModal.rating}</td>
+                                            <td>{arrayModal.name}</td>
+                                            <td>{arrayModal.realm.slug}</td>
+                                            <td>{arrayModal.faction}</td>
+                                            <td>{arrayModal.season_match_statistics.played}</td>
+                                            <td>{arrayModal.season_match_statistics.lost}</td>
+                                            <td>{arrayModal.season_match_statistics.won}</td>
+                                        </tr>
+                                        )
+                                        )
                             break;
-                            case 'pvp_3v3':
-                                MiniStat = this.props.pvp_3v3.map(arrayModal => (
+                            case 'PVP_3v3':
+                                MiniStat = this.filteringData(this.props.pvp_3v3, this.props.data_character).map(arrayModal => (
                                     <tr>
                                         <td>{arrayModal.rank}</td>
                                         <td>{arrayModal.rating}</td>
-                                        <td>{arrayModal.realm}</td>
-                                        <td>{arrayModal.faction}</td>
                                         <td>{arrayModal.name}</td>
-                                        <td>{arrayModal.race}</td>
-                                        <td>{arrayModal.class}</td>
-                                        <td>{arrayModal.spec}</td>
-                                        <td>{arrayModal.winlose}</td>
+                                        <td>{arrayModal.realm.slug}</td>
+                                        <td>{arrayModal.faction}</td>
+                                        <td>{arrayModal.season_match_statistics.played}</td>
+                                        <td>{arrayModal.season_match_statistics.lost}</td>
+                                        <td>{arrayModal.season_match_statistics.won}</td>
                                     </tr>
                                 ));
+                            break;    
+                            case 'PVP_RBG':
+                                    MiniStat = this.filteringData(this.props.pvp_rbg, this.props.data_character).map(arrayModal => (
+                                    <tr>
+                                        <td>{arrayModal.rank}</td>
+                                        <td>{arrayModal.rating}</td>
+                                        <td>{arrayModal.name}</td>
+                                        <td>{arrayModal.realm.slug}</td>
+                                        <td>{arrayModal.faction}</td>
+                                        <td>{arrayModal.season_match_statistics.played}</td>
+                                        <td>{arrayModal.season_match_statistics.lost}</td>
+                                        <td>{arrayModal.season_match_statistics.won}</td>
+                                    </tr>
+                                    ));
                                 break;
-            }
+                            default:
+                                break;
         }
-
-
-            // case 'pvp_rbg':
-            //     MiniStat = this.props.pvp_rbg.map(arrayModal => (
-            //         <tr>
-            //             <td>{arrayModal.rank}</td>
-            //             <td>{arrayModal.rating}</td>
-            //             <td>{arrayModal.name}</td>
-            //             <td>{arrayModal.realm}</td>
-            //             <td>{arrayModal.faction}</td>
-            //             <td>{arrayModal.race}</td>
-            //             <td>{arrayModal.class}</td>
-            //             <td>{arrayModal.spec}</td>
-            //             <td>{arrayModal.winlose}</td>
-            //         </tr>
-            //     ));
-
-
-        // if(this.props.pvp_type) {
-        //     MiniStat = this.props.pvp_2v2.map(arrayModal => (
-        //         <tr>
-        //             <td>{arrayModal.rank}</td>
-        //             <td>{arrayModal.rating}</td>
-        //             <td>{arrayModal.name}</td>
-        //             <td>{arrayModal.realm}</td>
-        //             <td>{arrayModal.faction}</td>
-        //             <td>{arrayModal.race}</td>
-        //             <td>{arrayModal.class}</td>
-        //             <td>{arrayModal.spec}</td>
-        //             <td>{arrayModal.winlose}</td>
-        //         </tr>
-        //     ));
-        // }
 
         return (
             <div>
@@ -89,7 +91,6 @@ class StatTable extends Component {
                         <th>Name</th>
                         <th>Realm</th>
                         <th>Faction</th>
-                        <th>Tier</th>
                         <th>Played</th>
                         <th>Lost</th>
                         <th>Win</th>

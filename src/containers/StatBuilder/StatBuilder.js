@@ -79,17 +79,6 @@ class StatBuilder extends Component{
 
     render() {
 
-        // if(this.filteringData(this.props.pvp_2v2, this.props.data_character)) {
-        //         MiniStat = this.filteringData(this.props.pvp_2v2, this.props.data_character).map(arrayModal => (
-        //             <tr>
-        //                 <td>{arrayModal.rank}</td>
-        //                 <td>{arrayModal.rating}</td>
-        //                 <td>{arrayModal.name}</td>
-        //                 <td>{arrayModal.realm.slug}</td>
-        //             </tr>
-        //         ))
-        // }
-
         let StatModal = (
             <div>
                 <h1>PVP STATS</h1>
@@ -153,8 +142,7 @@ const mapStateToProps = state => {
         pvp_2v2: state.data.pvp_2v2,
         pvp_3v3: state.data.pvp_3v3,
         pvp_rbg: state.data.pvp_rbg,
-        data_character: state.data.data_character,
-        mergedDataList: state.data.mergedDataList
+        data_character: state.data.data_character
     }
 };
 

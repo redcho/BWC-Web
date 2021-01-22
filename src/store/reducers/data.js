@@ -41,13 +41,9 @@ const reducer = (state= initialState, action) => {
         case actionTypes.FETCH_DATA_SUCCESS_3V3: return fetchDataSuccess_3v3(state, action);
         case actionTypes.FETCH_DATA_SUCCESS_RBG: return fetchDataSuccess_rbg(state, action);
         case actionTypes.FETCH_DATA_SUCCESS_CHARACTER: return fetchDataSuccess_character(state, action);
-
-          break;
-
-          break;
         case actionTypes.FETCH_DATA_FAIL: return fetchDataFail(state, action);
 
-
+        break;
         default:
             return state;
     }

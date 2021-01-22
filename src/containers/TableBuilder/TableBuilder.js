@@ -40,9 +40,9 @@ class TableBuilder extends Component {
                         </li>
                     </ul>
                     <Switch>
-                        <Route path="/pvp/2v2" render={() =>(<StatTable pvp_type='pvp_2v2'/>)} />
-                        <Route path="/pvp/3v3" render={() =>(<StatTable pvp_type='pvp_3v3'/>)} />
-                        <Route path="/pvp/rbg" component={StatTable} />
+                        <Route path="/pvp/2v2" render={() =>(<StatTable pvp_type='PVP_2v2'/>)} />
+                        <Route path="/pvp/3v3" render={() =>(<StatTable pvp_type='PVP_3v3'/>)} />
+                        <Route path="/pvp/rbg" render={() =>(<StatTable pvp_type='PVP_RBG'/>)} />
                     </Switch>
                 </div>
             )
