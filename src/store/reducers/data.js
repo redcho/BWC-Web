@@ -5,7 +5,6 @@ const initialState = {
     pvp_2v2: null,
     pvp_3v3: null,
     pvp_rbg: null,
-    rbg: null,
     data_character: null,
     loading: false,
     error: null

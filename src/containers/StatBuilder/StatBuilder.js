@@ -8,7 +8,8 @@ import * as actions from "../../store/actions/index";
 
 class StatBuilder extends Component{
     state = {
-                listElements: ['2v2','3v3','RBG']
+                listElements: ['2v2','3v3','RBG'],
+                pvpData: null      
     }
 
 
@@ -33,16 +34,14 @@ class StatBuilder extends Component{
           );
         }
       }
-      return merged.slice(0,5)
+         return merged.slice(0,5)
     }
 
-
-    render() {
-        // this.filteringData(this.props.pvp_2v2, this.props.data_character);
-
-
+    renderSwitch(param) {
         let MiniStat = <Spinner />;
-        if(this.filteringData(this.props.pvp_2v2, this.props.data_character)) {
+        switch(param) {
+          case '2v2':
+            return (
                 MiniStat = this.filteringData(this.props.pvp_2v2, this.props.data_character).map(arrayModal => (
                     <tr>
                         <td>{arrayModal.rank}</td>
@@ -51,15 +50,53 @@ class StatBuilder extends Component{
                         <td>{arrayModal.realm.slug}</td>
                     </tr>
                 ))
+            );
+            case '3v3':
+                return (
+                    MiniStat = this.filteringData(this.props.pvp_3v3, this.props.data_character).map(arrayModal => (
+                        <tr>
+                            <td>{arrayModal.rank}</td>
+                            <td>{arrayModal.rating}</td>
+                            <td>{arrayModal.name}</td>
+                            <td>{arrayModal.realm.slug}</td>
+                        </tr>
+                    ))
+                );
+                case 'RBG':
+                    return (
+                        MiniStat = this.filteringData(this.props.pvp_rbg, this.props.data_character).map(arrayModal => (
+                            <tr>
+                                <td>{arrayModal.rank}</td>
+                                <td>{arrayModal.rating}</td>
+                                <td>{arrayModal.name}</td>
+                                <td>{arrayModal.realm.slug}</td>
+                            </tr>
+                        ))
+                    );        
         }
+      }
+      
 
-        let StatModal = this.state.listElements.map(arrayModal => (
+    render() {
+
+        // if(this.filteringData(this.props.pvp_2v2, this.props.data_character)) {
+        //         MiniStat = this.filteringData(this.props.pvp_2v2, this.props.data_character).map(arrayModal => (
+        //             <tr>
+        //                 <td>{arrayModal.rank}</td>
+        //                 <td>{arrayModal.rating}</td>
+        //                 <td>{arrayModal.name}</td>
+        //                 <td>{arrayModal.realm.slug}</td>
+        //             </tr>
+        //         ))
+        // }
+
+        let StatModal = (
             <div>
                 <h1>PVP STATS</h1>
                 <div className={classes.flexContainer}>
                     {
                         this.state.listElements.map(elm =>{
-                            return  (<div key={arrayModal[elm]}>
+                            return  (<div key={elm}>
                                         <h2>{elm}</h2>
                                         <table>
                                             <thead>
@@ -71,7 +108,7 @@ class StatBuilder extends Component{
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {MiniStat}
+                                                {this.renderSwitch(elm)}
                                             </tbody>
                                             <tfoot>
                                                 <tr>
@@ -85,7 +122,8 @@ class StatBuilder extends Component{
                 </div>
             </div>
 
-        ))
+        )
+        
 
 
 
@@ -113,6 +151,8 @@ class StatBuilder extends Component{
 const mapStateToProps = state => {
     return {
         pvp_2v2: state.data.pvp_2v2,
+        pvp_3v3: state.data.pvp_3v3,
+        pvp_rbg: state.data.pvp_rbg,
         data_character: state.data.data_character,
         mergedDataList: state.data.mergedDataList
     }
