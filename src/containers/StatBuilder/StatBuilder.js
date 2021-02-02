@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom'; 
 
 import classes from "./StatBuilder.module.css";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import Aux from "../../hoc/Aux";
-import * as actions from "../../store/actions/index";
 
 class StatBuilder extends Component{
     state = {
@@ -101,7 +101,8 @@ class StatBuilder extends Component{
                                             </tbody>
                                             <tfoot>
                                                 <tr>
-                                                    <td colSpan="4"><a className={classes.moreLink} href="">SEE MORE >>></a></td>
+                                                    {/* <td colSpan="4"><a className={classes.moreLink} href={'/pvp/'+ elm}>SEE MORE >>></a></td> */}
+                                                    <td colSpan="4"><NavLink to={'/pvp/' + elm} className={classes.moreLink}>SEE MORE >>></NavLink></td>
                                                 </tr>
                                             </tfoot>
                                         </table>
@@ -110,7 +111,6 @@ class StatBuilder extends Component{
                     }
                 </div>
             </div>
-
         )
         
 
