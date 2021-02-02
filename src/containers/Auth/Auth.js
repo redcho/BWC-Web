@@ -115,6 +115,7 @@ class Auth extends Component {
                         {form}
                         <br/>
                         <input type="submit" value="LOG IN" disabled={!this.state.totalValid}/>
+                        <br/>
                     </form>
                     {authRedirect}
                 </div>

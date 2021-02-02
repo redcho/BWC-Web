@@ -1,11 +1,11 @@
 .flexContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+     display: flex;
+    justify-content: center; 
+    /* align-items: center; */
 }
 
 .flexContainer > div {
-    width: 30%;
+    width: 33.3%;
     text-align: center;
 }
 
@@ -32,7 +32,7 @@ a.moreLink:hover {
     display: block;
     position: absolute;
     left: 0;
-    top: 2rem;
+    top: 3.2rem;
     width: 100%;
     height: 100%;
     z-index: 1;
@@ -48,5 +48,15 @@ a.moreLink:hover {
     font-size: 120%;
 }
 
+@media (max-width: 1200px) {
+    .flexContainer {
+        flex-direction: column;
+        align-items: center;
+   }
+
+   .flexContainer > div {
+    width: 100%;
+    }
+}
 
 

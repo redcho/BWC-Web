@@ -6,6 +6,7 @@ import Auth from "./containers/Auth/Auth";
 import Logout from "./containers/Auth/Logout/logout";
 import StatBuilder from "./containers/StatBuilder/StatBuilder";
 import StatTable from "./containers/TableBuilder/TableBuilder";
+import Construction from "./components/Construction/Construction";
 
 import { connect } from 'react-redux';
 import * as actions from "./store/actions/index";
@@ -36,9 +37,9 @@ class App extends Component {
                <Switch>
                    <Route path="/home" component={StatBuilder} />
                    <Route path="/login" component={Auth} />
-                   <Route path="/pve" component={StatBuilder} />
+                   <Route path="/pve" component={Construction} />
                    <Route path="/pvp" component={StatTable} />
-                   <Route path="/auctionhouse" component={StatBuilder} />
+                   <Route path="/auctionhouse" component={Construction} />
                    <Route path="/logout" component={Logout} />
                    <Route path="/stats" component={StatBuilder} />
                    <Redirect from="/" to="/login"/>
